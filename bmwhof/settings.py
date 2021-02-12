@@ -120,4 +120,4 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
-LOCALE_PATHS = BASE_DIR / 'locale'
+LOCALE_PATHS = [BASE_DIR / 'locale']
