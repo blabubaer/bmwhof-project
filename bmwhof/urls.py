@@ -17,6 +17,10 @@ from os import name
 from django.contrib import admin
 from django.urls import path
 from parts import views
+import blog.views
+from django.conf.urls.static import static
+from django.conf import settings
+
 
 urlpatterns = [
     path('admin/', admin.site.urls),
@@ -29,6 +33,13 @@ urlpatterns = [
     path('', views.home, name='home'),
     path('addpart', views.addpart, name='addpart'),
     path('overview', views.overview, name='overview'),
+
+    #blog-app
+    path('addblog', blog.views.add_blog, name='addblog'),
+    path('blog_view/<int:pk>/', blog.views.blog_view, name='blog_view'),
+
     
 
-]
+] 
+if settings.DEBUG:
+    urlpatterns += static(settings.MEDIA_URL, document_root=settings.MEDIA_ROOT)

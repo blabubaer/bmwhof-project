@@ -1,0 +1,12 @@
+<form method="post" enctype="multipart/form-data">
+    {% csrf_token %}
+
+    {{ blog_form.as_p}}
+
+    {{formset.management_form}}
+    {% for form in formset %}
+    {{ form.as_p }}
+    {% endfor %}
+    <input type="submit" name="submit" value="Submit" />
+
+</form>
